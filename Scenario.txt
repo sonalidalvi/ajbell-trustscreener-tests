@@ -1,0 +1,10 @@
+# Scenario: Verify functionality of AJ Bell trust screener
+1. Given I open the AJ Bell Trust Screener at "https://www.ajbell.co.uk/market-research/screener/trusts"
+2. Then I verify that the total number of records displayed in the table is greater than 300
+3. When I open the Advanced Filter panel
+4. And I apply the filter "Morningstar Rating" with the value "1"
+5. Then I verify that the total number of records in the table updates accordingly
+6. When I remove the "Morningstar Rating" filter with the value "1"
+7. Then I verify that the total number of records in the table returns to the original count
+
+
