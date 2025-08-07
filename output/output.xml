@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.6 on win32)" generated="2025-08-07T17:09:19.999834" rpa="false" schemaversion="5">
+<suite id="s1" name="trustScreener Test" source="C:\Users\Arun Dalvi\AJBell\tests\trustScreener_Test.robot">
+<kw name="Open AJ Bell Website" owner="trustScreener_keywords" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-08-07T17:09:20.310321" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Arun Dalvi\\AJBell\\output\\browser\\traces\\temp\\2b611918-1cc8-4208-afed-ab25b8b986c6"}</msg>
+<msg time="2025-08-07T17:09:20.358117" level="INFO">Starting Browser process C:\Users\Arun Dalvi\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:65528</msg>
+<msg time="2025-08-07T17:09:22.645912" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Arun Dalvi\\AJBell\\output\\browser\\traces\\temp\\2b611918-1cc8-4208-afed-ab25b8b986c6"}</msg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-08-07T17:09:20.309313" elapsed="2.336867"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-08-07T17:09:30.124001" level="INFO">Successfully initialized new page object and opened url: https://www.ajbell.co.uk/market-research/screener/trusts</msg>
+<msg time="2025-08-07T17:09:30.124247" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-08-07T17:09:22.646510" elapsed="7.478132"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:30.393694" level="INFO">Waited for Element with selector text=Login at state visible</msg>
+<arg>text=Login</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.125652" elapsed="0.268432"/>
+</kw>
+<kw name="Handle Cookie Banner If Present" owner="trustScreener_keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:30.423156" level="INFO">Waited for Element with selector data-testid=cookieConsentAcceptAll at state visible</msg>
+<arg>${COOKIE_ACCEPT_BUTTON}</arg>
+<arg>visible</arg>
+<arg>timeout=5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.395895" elapsed="0.027723"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:30.425866" level="INFO">Clicks the element 'data-testid=cookieConsentAcceptAll'.</msg>
+<arg>${COOKIE_ACCEPT_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.424153" elapsed="0.155720"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:30.394740" elapsed="0.185523"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:20.308388" elapsed="10.272109"/>
+</kw>
+<test id="s1-t1" name="Verify Functionality Of AJ Bell Trust Screener" line="11">
+<kw name="Check Number of Records" owner="trustScreener_keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:30.651582" level="INFO">Waited for Element with selector text=Showing 365 results at state visible</msg>
+<arg>${Records}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.603607" elapsed="0.048460"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${NumberOfRows} &gt; 300</arg>
+<arg>msg=Found ${NumberOfRows} records on the page</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.652606" elapsed="0.002114"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:30.602161" elapsed="0.053272"/>
+</kw>
+<kw name="Open Advanced Filter Panel" owner="trustScreener_keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:30.659486" level="INFO">Clicks the element 'role=button[name="Advanced Filters"]'.</msg>
+<arg>${Advanced_Search_Button}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.657908" elapsed="0.158168"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:31.028574" level="INFO">Waited for Element with selector xpath=//label[contains(text(), 'Morningstar Rating')] at state visible</msg>
+<arg>xpath=//label[contains(text(), 'Morningstar Rating')]</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:30.816657" elapsed="0.212219"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:30.656551" elapsed="0.372563"/>
+</kw>
+<kw name="Apply Morningstar Filter" owner="trustScreener_keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:31.066160" level="INFO">Clicks the element 'role=combobox[name="Morningstar Rating"]'.</msg>
+<arg>${MORNINGSTAR_RATING_DROPDOWN}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:31.064459" elapsed="1.272184"/>
+</kw>
+<kw name="Get Element States" owner="Browser">
+<msg time="2025-08-07T17:09:32.469980" level="INFO">States are: ['attached', 'hidden', 'enabled', 'editable', 'focused', 'unchecked']</msg>
+<msg time="2025-08-07T17:09:32.470540" level="INFO">${states} = ['attached', 'hidden', 'enabled', 'editable', 'focused', 'unchecked']</msg>
+<var>${states}</var>
+<arg>${CHECKBOX_1}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Get the active states from the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.337105" elapsed="0.133604"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-07T17:09:32.472609" level="INFO">['attached', 'hidden', 'enabled', 'editable', 'focused', 'unchecked']</msg>
+<arg>${states}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.471337" elapsed="0.001716"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:32.483182" level="INFO">Waited for Element with selector xpath=//label[contains(., '1')] at state visible</msg>
+<arg>${RATING_LABEL_1}</arg>
+<arg>visible</arg>
+<arg>timeout=5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.473677" elapsed="0.009735"/>
+</kw>
+<kw name="Scroll To Element" owner="Browser">
+<arg>${RATING_LABEL_1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>This method waits for actionability checks, then tries to scroll element into view,
+unless it is completely visible.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.483673" elapsed="0.062812"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:32.549723" level="INFO">Clicks the element 'xpath=//label[contains(., '1')]'.</msg>
+<arg>${RATING_LABEL_1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.547165" elapsed="0.148487"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:32.698511" level="INFO">Clicks the element 'css=button[data-testid="button-component"] &gt;&gt; text=Save'.</msg>
+<arg>${SAVE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.696694" elapsed="0.122318"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-08-07T17:09:33.204137" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-08-07T17:09:32.819665" elapsed="0.384881"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:34.296015" level="INFO">Waited for Element with selector xpath=//p[contains(text(), 'Showing 29 results')] at state visible</msg>
+<arg>xpath=//p[contains(text(), 'Showing 29 results')]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:33.205269" elapsed="1.091032"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-08-07T17:09:34.487261" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-2.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-2.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.296586" elapsed="0.190975"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:31.063567" elapsed="3.424283"/>
+</kw>
+<kw name="Remove Morningstar Filter With Value" owner="trustScreener_keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:34.493388" level="INFO">Clicks the element 'role=combobox[name="Morningstar Rating"]'.</msg>
+<arg>${MORNINGSTAR_RATING_DROPDOWN}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.492286" elapsed="0.124081"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:34.633008" level="INFO">Waited for Element with selector xpath=//label[contains(., '1')] at state visible</msg>
+<arg>${RATING_LABEL_1}</arg>
+<arg>visible</arg>
+<arg>timeout=5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.616670" elapsed="0.016711"/>
+</kw>
+<kw name="Scroll To Element" owner="Browser">
+<arg>${RATING_LABEL_1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>This method waits for actionability checks, then tries to scroll element into view,
+unless it is completely visible.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.634193" elapsed="0.069364"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:34.706907" level="INFO">Clicks the element 'xpath=//label[contains(., '1')]'.</msg>
+<arg>${RATING_LABEL_1}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.704258" elapsed="0.177376"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-07T17:09:34.883451" level="INFO">Clicks the element 'css=button[data-testid="button-component"] &gt;&gt; text=Save'.</msg>
+<arg>${SAVE_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-07T17:09:34.881977" elapsed="0.142706"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-08-07T17:09:35.316554" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-3.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-3.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-08-07T17:09:35.025118" elapsed="0.291796"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${NumberOfRows} &gt; 300</arg>
+<arg>msg=Found ${NumberOfRows} records on the page</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-08-07T17:09:35.317233" elapsed="0.001208"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-08-07T17:09:36.724464" level="INFO">Waited for Element with selector xpath=//p[contains(text(), 'Showing 365 results')] at state visible</msg>
+<arg>xpath=//p[contains(text(), 'Showing 365 results')]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-08-07T17:09:35.318756" elapsed="1.406304"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:34.491250" elapsed="2.234222"/>
+</kw>
+<doc>Verifies record count, applies and removes Morningstar filter</doc>
+<status status="PASS" start="2025-08-07T17:09:30.580774" elapsed="6.148933"/>
+</test>
+<kw name="Close The Browser" owner="trustScreener_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-08-07T17:09:37.537400" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-07T17:09:36.801427" elapsed="0.736367"/>
+</kw>
+<status status="PASS" start="2025-08-07T17:09:36.799819" elapsed="0.738552"/>
+</kw>
+<doc>E2E Test: Navigate to AJ Bell TrustScreener Page and verify functionality</doc>
+<status status="PASS" start="2025-08-07T17:09:20.007308" elapsed="17.531251"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="trustScreener Test" id="s1" pass="1" fail="0" skip="0">trustScreener Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
