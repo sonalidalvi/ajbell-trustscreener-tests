@@ -19,7 +19,7 @@ Check Number of Records
 
 Open Advanced Filter Panel
     Click                     ${Advanced_Search_Button}
-    Wait For Elements State   xpath=//label[contains(text(), 'Morningstar Rating')]    visible
+    Wait For Elements State   ${MORNINGSTAR_RATING_PAGE}    visible
 
 Apply Morningstar Filter
     Click                     ${MORNINGSTAR_RATING_DROPDOWN}         # Open the dropdown
@@ -30,7 +30,8 @@ Apply Morningstar Filter
     Click                     ${RATING_LABEL_1}                       # Click label (linked to hidden checkbox)
     Click                     ${SAVE_BUTTON}                         # Save the filter
     Take Screenshot
-    Wait For Elements State   xpath=//p[contains(text(), 'Showing 29 results')]    visible    timeout=10s
+    Wait For Elements State   ${MORNINGSTAR_RECORDS_MESSAGE}    visible    timeout=10s
+    Should Be True            ${MORNINGSTAR_RATING_RECORDS} > 0    msg=Found ${MORNINGSTAR_RATING_RECORDS} records on the page
     Take Screenshot
 
 Remove Morningstar Filter With Value
@@ -42,7 +43,7 @@ Remove Morningstar Filter With Value
     Take Screenshot
     #Verify total number of records in the table returns to the original count
     Should Be True            ${NumberOfRows} > 300    msg=Found ${NumberOfRows} records on the page   
-    Wait For Elements State   xpath=//p[contains(text(), 'Showing 365 results')]    visible    timeout=10s
+    Wait For Elements State   ${Records}    visible    timeout=10s
 
 Close The Browser
     Close Browser

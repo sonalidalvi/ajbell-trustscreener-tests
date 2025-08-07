@@ -10,4 +10,6 @@ ${MORNINGSTAR_RATING_DROPDOWN}   role=combobox[name="Morningstar Rating"]
 ${CHECKBOX_1}                    css=input[aria-label="1 check box"]
 ${RATING_LABEL_1}                xpath=//label[contains(., '1')]
 ${SAVE_BUTTON}                   css=button[data-testid="button-component"] >> text=Save
-
+${MORNINGSTAR_RATING_PAGE}       xpath=//label[contains(text(), 'Morningstar Rating')]
+${MORNINGSTAR_RATING_RECORDS}    29
+${MORNINGSTAR_RECORDS_MESSAGE}   xpath=//p[contains(text(), 'Showing 29 results')]    # For value 1
